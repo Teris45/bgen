@@ -686,7 +686,7 @@ void point_rect(struct point point, double min[], double max[]) {
 #define BGEN_NAME spatial
 #define BGEN_TYPE struct point
 #define BGEN_SPATIAL
-#define BGEN_ITEMRECT return point_rect(item, min, max);
+#define BGEN_ITEMRECT point_rect(item, min, max);
 #define BGEN_COMPARE return point_compare(a, b);
 #include "../bgen.h"
 ```
