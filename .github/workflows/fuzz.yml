@@ -1,0 +1,23 @@
+name: Libfuzzer for BGEN
+
+on:
+  push:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  fuzz:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install clang libfuzzer
+      run: apt-get update && apt-get install -y clang
+        
+    - name: Build Harness 
+      run: clang -fsanitize=fuzzer example.c
+    
+    - name: Run Fuzzer
+      run: ./a.out -max_total_time=36000
